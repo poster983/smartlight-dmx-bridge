@@ -8,37 +8,37 @@
     "lights": {
         "192.168.1.16": {
             "universe": 1,
-            "address": 1,
+            "address": 7,
             "platform": "lifx",
             "type": "bulb"
         },
         "192.168.1.13": {
             "universe": 1,
-            "address": 4,
+            "address": 10,
             "platform": "lifx",
             "type": "bulb"
         },
         "192.168.1.19": {
             "universe": 1,
-            "address": 7,
+            "address": 13,
             "platform": "lifx",
             "type": "bulb"
         },
         "192.168.1.18": {
             "universe": 1,
-            "address": 10,
+            "address": 16,
             "platform": "lifx",
             "type": "bulb"
         },
         "192.168.1.7": {
             "universe": 1,
-            "address": 13,
+            "address": 1,
             "platform": "lifx",
             "type": "bulb"
         },
         "192.168.1.5": {
             "universe": 1,
-            "address": 16,
+            "address": 4,
             "platform": "lifx",
             "type": "bulb"
         }

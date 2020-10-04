@@ -35,7 +35,7 @@ sACN.on('packet', (packet) => {
       console.log("GO")
       setTimeout(() => {
         throttle = false;
-      }, 70)
+      }, 150)
     }
     
     //console.log('got dmx data:', packet.payload);
