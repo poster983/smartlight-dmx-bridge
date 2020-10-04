@@ -8,12 +8,27 @@ var client = new LifxClient();
 let lights = new Lights()
 client.on('light-new', function(light) {
   //Add lights to system
-  console.log(light.address)
+  console.log(`Found light at address: ${light.address}`);
   lights.addLIFX(light);
-  console.log(lights.universe)
+  light.getState((err, state) => {
+    if(err) {
+      throw err;
+    }
+    console.log(state)
+    if(state.power == 0) {
+      light.on();
+      light.colorRgb(0,0,0,1000);
+    }
+  });
 });
-client.init();
 
+client.init()
+
+
+
+/*setTimeout(()=> {
+  console.log(lights.universe)
+}, 2000);*/
 
 const sACN = new Receiver({
     universes: config.get("sACN.universes"),
@@ -22,6 +37,7 @@ const sACN = new Receiver({
     reuseAddr: config.get("sACN.reuseAddr"),
     // see table 1 below for all options
 });
+
 let throttle = false;
 sACN.on('packet', (packet) => {
   //console.log('got dmx data:', packet.payload, packet.universe);
@@ -29,13 +45,17 @@ sACN.on('packet', (packet) => {
         console.log('got dmx data:', packet.payload, packet.universe);
         //lights.fromSACN(packet);
     }
+    
     if(throttle == false) {  //throttle the payload
+      
       throttle = true;
-      lights.fromSACN(packet);
-      console.log("GO")
       setTimeout(() => {
+        
         throttle = false;
       }, 150)
+      lights.fromSACN(packet);
+      console.log("GO")
+      
     }
     
     //console.log('got dmx data:', packet.payload);

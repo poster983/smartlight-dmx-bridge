@@ -1,4 +1,5 @@
 const config = require('config');
+const lifx = require("./platforms/lifx");
 
 module.exports = class Lights {
     constructor() {
@@ -22,19 +23,23 @@ module.exports = class Lights {
     }
 
     fromSACN(packet) {
-
+        
         let universe = this.universe[packet.universe];
         
         if(universe) {
             let addresses = Object.keys(universe); // get the keys in the universe and check their 
+            
             for(let x = 0; x < addresses.length; x++) {
                 let baseAddr = parseInt(addresses[x]);
                 let light = universe[baseAddr];
-
                 
-                if(packet.payload[baseAddr] || packet.payload[baseAddr+1] || packet.payload[baseAddr+2]) { //check if the packet is meant for us
+                lifx(packet, light, baseAddr);
+                
+
+                /*if(packet.payload[baseAddr] || packet.payload[baseAddr+1] || packet.payload[baseAddr+2]) { //check if the packet is meant for us
                     //console.log("on")
                     //console.log(255*(packet.payload[baseAddr])/100, 255*(packet.payload[baseAddr+1]||0)/100, 255*(packet.payload[baseAddr+2]||0)/100)
+                    
                     switch (light.platform) {
                         case "lifx": {
                             let color = {red: 255*(packet.payload[baseAddr]||0)/100, green: 255*(packet.payload[baseAddr+1]||0)/100, blue: 255*(packet.payload[baseAddr+2]||0)/100}
@@ -57,7 +62,7 @@ module.exports = class Lights {
                     light.light.colorRgb(0, 0, 0, 100);
                     this.universe[packet.universe][baseAddr].lastValues = {red: 0, green: 0, blue: 0}
                     //light.light.off(70);
-                }
+                }*/
             }
             
         }

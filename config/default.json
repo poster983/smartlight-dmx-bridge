@@ -28,7 +28,7 @@
             "universe": 1,
             "address": 16,
             "platform": "lifx",
-            "type": "bulb"
+            "type": "strip"
         },
         "192.168.1.7": {
             "universe": 1,
