@@ -1,7 +1,9 @@
 const Lights = require("./Lights.js");
 const { Receiver } = require('sacn');
 const config = require('config');
+const lightConfig = config.get("lights")
 
+/*** LIFX  */
 var LifxClient = require('node-lifx').Client;
 var client = new LifxClient();
 
@@ -24,6 +26,10 @@ client.on('light-new', function(light) {
 
 client.init()
 
+
+/** NANOLEAF */
+
+//for(let x = 0;  x < )
 
 
 /*setTimeout(()=> {
