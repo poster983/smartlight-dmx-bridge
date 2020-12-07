@@ -1,7 +1,7 @@
 {
   "name": "smartlight-dmx-bridge",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "license": "MIT",
   "dependencies": {
     "config": "^3.3.2",
@@ -10,6 +10,7 @@
     "sacn": "^3.2.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.mjs",
+    "GetNanoleafToken": "node bin/GetNanoleafToken.mjs"
   }
 }

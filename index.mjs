@@ -1,10 +1,29 @@
-const Lights = require("./Lights.js");
+/*const Lights = require("./Lights.js");
 const { Receiver } = require('sacn');
 const config = require('config');
+const lightConfig = config.get("lights")*/
+
+import sacn from 'sacn';
+const {Receiver} = sacn
+
+import config from 'config'
 const lightConfig = config.get("lights")
+console.log({
+  universes: config.get("sACN.universes"),
+  port: config.get("sACN.port"),
+  iface: config.get("sACN.iface"),
+  reuseAddr: config.get("sACN.reuseAddr"),
+  // see table 1 below for all options
+})
+
+import Lights from "./Lights.mjs";
+
+import { NanoleafClient, ServiceDiscovery } from 'nanoleaf-client';
+import nodeLifx from "node-lifx";
+const LifxClient = nodeLifx.Client;
 
 /*** LIFX  */
-var LifxClient = require('node-lifx').Client;
+//var LifxClient = require('node-lifx').Client;
 var client = new LifxClient();
 
 let lights = new Lights()
@@ -28,6 +47,11 @@ client.init()
 
 
 /** NANOLEAF */
+let serviceDiscovery = new ServiceDiscovery();
+serviceDiscovery.discoverNanoleaf().then(devices => {
+
+
+})
 
 //for(let x = 0;  x < )
 

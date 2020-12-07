@@ -1,7 +1,8 @@
-const config = require('config');
-const lifx = require("./platforms/lifx");
-
-module.exports = class Lights {
+/*import config from 'config'
+import lifx from "./platforms/lifx.js";*/
+/*const config = require('config');
+const lifx = require("./platforms/lifx");*/
+export default class Lights {
     constructor() {
         this.universe = {};
     }
@@ -20,6 +21,10 @@ module.exports = class Lights {
             this.universe[cfg.universe][cfg.address] = {light: light, platform: "lifx", type: cfg.type};
         }
         return this;
+    }
+
+    addNanoleafPanel(light) {
+
     }
 
     fromSACN(packet) {
