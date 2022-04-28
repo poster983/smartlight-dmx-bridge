@@ -9,8 +9,9 @@
     "node-lifx": "^0.8.0",
     "sacn": "^3.2.1"
   },
+  "type": "module",
   "scripts": {
-    "start": "node index.mjs",
-    "GetNanoleafToken": "node bin/GetNanoleafToken.mjs"
+    "start": "node index.js",
+    "GetNanoleafToken": "node bin/GetNanoleafToken.js"
   }
 }

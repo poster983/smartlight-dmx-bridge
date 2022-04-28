@@ -16,7 +16,7 @@ console.log({
   // see table 1 below for all options
 })
 
-import Lights from "./Lights.mjs";
+import Lights from "./Lights.js";
 
 import { NanoleafClient, ServiceDiscovery } from 'nanoleaf-client';
 import nodeLifx from "node-lifx";

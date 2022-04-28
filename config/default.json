@@ -2,7 +2,8 @@
     "sACN": {
         "universes": [1, 2],
         "port": 5568,
-        "iface": "192.168.1.17",
+        "//iface": "192.168.1.17",
+        "iface": "10.164.163.133",
         "reuseAddr": true
     },
     "lights": {
